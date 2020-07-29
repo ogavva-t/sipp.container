@@ -47,7 +47,7 @@
 
     ]]>
   </send>
-<recv response="407" auth="true">
+<recv response="401" auth="true">
 </recv>
 
 <send>
@@ -72,12 +72,12 @@
 
     INVITE sip:[service]@[remote_ip]:[remote_port] SIP/2.0
     Via: SIP/2.0/[transport] [local_ip]:[local_port]
-    From: sipp <sip:sipp@[local_ip]:[local_port]>;tag=[call_number]
-    To: sut <sip:[service]@[remote_ip]:[remote_port]>
+    From: [callerid] <sip:[callerid]@[local_ip]:[local_port]>;tag=[pid]SIPpTag00[call_number]
+    To: [service] <sip:[service]@[remote_ip]:[remote_port]>
     Call-ID: [call_id]
     CSeq: 2 INVITE
     Contact: sip:sipp@[local_ip]:[local_port]
-    [authentication username=foouser]
+    [authentication]
     Max-Forwards: 70
     Subject: Performance Test
     Content-Type: application/sdp
@@ -93,8 +93,6 @@
 
   ]]>
 </send>
-
-
 
   <recv response="100"
         optional="true">
